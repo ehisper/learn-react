@@ -10,18 +10,21 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-        
-      
-      //jsx
+      //jsx  js表达式
       let obj = { firstName : 'simth',
                   lastName : 'Will'}
       
       let createEl = obj => `${obj.lastName}`
-      let el = (<div>{createEl(obj)}</div>)
+      let el = <div>{createEl(obj)}</div>
+      //同 let el = React.createElement('div',{className:'greeting'},'hello world')
+      // let el = {type:'div',props: {className: 'greeting',children: 'hello world'}}
+      let e = <div class="dn">hello</div>
+      let e = React.createElement('div',{className: 'dn'},'hello')
+      let e = {type:'div',props:{className:'dn',children:'hello'}}
       ReactDOM.render(el, document.getElementById('root'))
 
 
-      
+
     </script>
   </body>
 </html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- 组件名必须以大写字母开头 -->
+<!--     <script type="text/babel">
+        
+        class Welcome extends React.Component {
+            render () {
+                return <h1>Hello, {this.props.name}</h1>
+            }
+        }
+
+        const element = <Welcome name="Sara" />;
+        ReactDOM.render(
+          element,
+          document.getElementById('root')
+        );
+    </script> -->
+    <!-- 组件的返回值只能有一个根元素 -->
+<!--     <script type="text/babel">
+        
+        class Welcome extends React.Component{
+            render () {
+                return <div>hello,{this.props.name}</div>
+            }
+        }
+        function App () {
+            return (<div>
+                <Welcome name="amy"/>
+                <Welcome name="baby"/>
+            </div>)
+        }
+        ReactDOM.render(<App/>,document.getElementById('root'))
+
+    </script> -->
+    <!--  -->
+    <script type="text/babel">
+        
+
+        function formateDate (date) {
+            return date.toLocaleDateString()
+        }
+        function Comment (props) {
+            return (
+                <div className="Comment">
+                    <div className="Userinfo">
+                        <img 
+                            className="Avatar"
+                            src={props.author.src}
+                            alt={props.author.alt}/>
+                        <div className="Username">
+                            {props.author.name}
+                        </div>
+                    </div>
+                    <div className="Text">
+                        {props.text}
+                    </div>
+                    <div className="Time">
+                        {formateDate(props.time)}
+                    </div>
+                </div>
+            )
+        }
+        let obj = {
+            author : {src:'http://placekitten.com/g/64/64',alt:'alt',name:'name'},
+            text : 'text',
+            time : new Date(),
+        }
+        let el = <Comment 
+                    author = {obj.author}
+                    text = {obj.text}
+                    time = {obj.time}/>
+        
+        setInterval(function () {
+            ReactDOM.render(el,document.getElementById('root'))
+        },1000)
+    </script>
+  </body>
+</html>
