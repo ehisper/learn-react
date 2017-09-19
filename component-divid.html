@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            function formateDate (date) {
+                return date.toLocaleString()
+            }
+            function Avatar (props) {
+                return (   
+                    <div className='Avatar'>
+                          <img 
+                            src={props.src}
+                            alt=""/>
+                    </div>
+                )
+            }
+            function User (props) {
+                return (
+                    <div>
+                        <Avatar src={props.src}/>
+                        <div className="Name">
+                            {props.name}
+                        </div>
+                    </div>)
+            }
+            function Info (props) {
+                return (
+                    <div className="Info">
+                        <User src={props.user.src} avatar={props.user.avatar} name={props.user.name}/>
+                        <div className="text">
+                            {}
+                        </div>
+                    </div>)
+            }
+            let el = <User src="http://placekitten.com/g/64/64" name="name"/>
+            ReactDOM.render(el,document.getElementById('root'));
+
+
+        </script>
+
+  </body>
+</html>
