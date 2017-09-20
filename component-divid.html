@@ -9,6 +9,8 @@
   </head>
   <body>
         <div id="root"></div>
+        <!-- 纯函数（函数内部不改变传入的参数）、非纯函数 
+            react组件要像纯函数一样使用props-->
         <script type="text/babel">
             function formateDate (date) {
                 return date.toLocaleString()
@@ -34,17 +36,20 @@
             function Info (props) {
                 return (
                     <div className="Info">
-                        <User src={props.user.src} avatar={props.user.avatar} name={props.user.name}/>
+                        <User user={props.user}/>
                         <div className="text">
-                            {}
+                            {props.text}
                         </div>
                     </div>)
             }
-            let el = <User src="http://placekitten.com/g/64/64" name="name"/>
+            let userInfo = {
+                src:"http://placekitten.com/g/64/64",
+                name:"name",
+            }
+            let el = <Info user={userInfo}   text="text"/>
             ReactDOM.render(el,document.getElementById('root'));
 
 
         </script>
-
   </body>
 </html>
