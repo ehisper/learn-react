@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>react-event</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+        <div id="root"></div>
+        <a href="#" onclick="console.log('the link is clicked');  return false">click me </a>
+        <!-- react绑定事件属性名=》驼峰法   函数名使用jsx语法 {} 
+        不能使用return false阻止默认事件必须使用preventDefault-->
+        <script type="text/babel">
+            class ActionLink extends React.Component {
+                constructor (props) {
+                    super(props);
+                    this.state = {
+                        isToggleOn: true
+                    }
+                    this.handleClick = this.handleClick.bind(this)
+                }
+                handleClick () {
+                    this.setState(prevState => ({
+                        isToggleOn:!prevState.isToggleOn
+                    }))
+                }
+                
+                render () {
+                    return (
+                        <a href="#" onClick={this.handleClick}>{this.state.isToggleOn?'on':'off'}</a>
+                    )
+                }
+            }
+
+            ReactDOM.render(<ActionLink/>,document.getElementById('root'))           
+        </script>
+  </body>
+</html>
+    

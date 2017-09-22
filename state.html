@@ -9,12 +9,20 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- 需要存储不用于视觉输出的东西，则可以手动向类中添加其他字段。如果你不在 render() 中使用某些东西，它就不应该在状态中
+    不要直接更新状态# this.state.date = ...应当使用setDate 构造函数是唯一一个可以初始化this.state的地方
+        state.props可能是异步拿到的 this.state((prevState,props) => {
+                    {counter:prevState.couner + props.increment}
+                }) 
+                组件可以将其状态作为属性传给子组件
+                单向数据流
+                生命周期 componentWillUnmount componentDidMount-->
     <script type="text/babel">
         class Clock extends React.Component{
             
             constructor(props) {
                 super(props);
-                this.state = {date: new Date()};
+                this.state = {date: new Date(),a:'a'};
               }
             
             render() {
@@ -24,7 +32,19 @@
                     <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
                   </div>
                 );
-              }
+            }
+            componentDidMount () {
+                this.timeId = setInterval(() => this.tick(),1000)
+            }
+            componentWillUnmount () {
+                clearInterval(this.timeId)
+            }
+            tick () {
+                this.setState({
+                    date: new Date()
+                })
+
+            }
         }
             ReactDOM.render(<Clock/>, document.getElementById('root'))
 
