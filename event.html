@@ -11,7 +11,8 @@
         <div id="root"></div>
         <a href="#" onclick="console.log('the link is clicked');  return false">click me </a>
         <!-- react绑定事件属性名=》驼峰法   函数名使用jsx语法 {} 
-        不能使用return false阻止默认事件必须使用preventDefault-->
+        不能使用return false阻止默认事件必须使用preventDefault
+        类的方法默认是不会绑定 this 的 方法后面没有（）必须绑定this-->
         <script type="text/babel">
             class ActionLink extends React.Component {
                 constructor (props) {
