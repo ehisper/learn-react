@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>react-list-render</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+        <div id="root"></div>
+        <!-- 当你在map()方法内部调用的元素时，你最好随时记得为每一个元素加上一个独一无二的key。 -->
+        <!-- <script type="text/babel">
+            const numbers = [1,2,3]
+            const numberLis = numbers.map(number => <li>{number}</li>)
+            ReactDOM.render(<ul>{numberLis}</ul>,document.getElementById('root'))
+            
+        </script> -->
+<!--         <script type="text/babel">
+            function NumberList(props) {
+              const numbers = props.numbers;
+              const listItems = numbers.map((number) =>
+                <li key={number.toString()}>
+                  {number}
+                </li>
+              );
+              return (
+                <ul>{listItems}</ul>
+              );
+            }
+
+            const numbers = [1, 2, 3, 4, 5];
+            ReactDOM.render(
+              <NumberList numbers={numbers} />,
+              document.getElementById('root')
+            );
+        </script> -->
+<!--         <script type="text/babel">
+           function Item (props) {
+                return (<li>{props.value}</li>)
+           } 
+           function List (props) {
+                const numbers = props.numbers
+                const numbersList = numbers.map(number => <Item key={number.toString()} value={number}/>)
+                return <ul>{numbersList}</ul>
+           }
+           const numbers = [1,2]
+           ReactDOM.render(<List numbers={numbers}/>,document.getElementById('root'))
+        </script> -->
+        <script type="text/babel">
+            function Two (props) {
+                const sideBar = <ul>{props.list1.map(item => <li key={item.id}>{item.text}</li>)}</ul>
+                const content = <ul>{props.list2.map(item => <li key={item.id}>{item.text}</li>)}</ul>
+                return (<div>
+                    {sideBar}
+                    <br/>
+                    {content}
+                </div>)
+            }
+            const numbers = [{id:0,text:'0'},{id:1,text:'1'}]
+            const numbers2   = [{id:0,text:'0'},{id:1,text:'1'}]
+           ReactDOM.render(<Two list1={numbers} list2={numbers2}/>,document.getElementById('root'))
+            
+        </script>
+  </body>
+</html>
+    
