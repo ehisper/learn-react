@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>react-form</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+        <div id="root"></div>
+        <!-- <script type="text/babel">
+            class FormSubmit extends React.Component {
+                constructor (props) {
+                    super(props)
+                    this.state = {value:''}
+                    this.handleSubmit = this.handleSubmit.bind(this)
+                    this.handleChange = this.handleChange.bind(this)
+                }
+
+                handleSubmit (event) {
+                    event.preventDefault()
+                    alert('the value is'+this.state.value)
+                }
+
+                handleChange (event) {
+                    this.setState({value:event.target.value})
+                }
+
+                render () {
+                    return (<div>
+                        <form onSubmit={this.handleSubmit}>
+                            <label for="">name: 
+                                <input type="text" value={this.state.value} onChange={this.handleChange}/>     </label>  
+                                <textarea value={this.state.value} onChange={this.handleChange} cols="30" rows="10"></textarea>
+                                <select value={this.state.value} onChange={this.handleChange}>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select>
+                        <input type="submit" value="submit"/>
+                        </form>
+                    </div>)
+                }
+             }
+             ReactDOM.render(<FormSubmit/>,document.getElementById('root'))
+        </script> -->
+        <script type="text/babel">
+            class Reservation extends React,Component {
+                constructor (props) {
+                    super(props)
+                    this.state = {numberOfGuests:2,isGoing:true}
+                    this.handleChange = this.handleChange.bind(this)
+                }
+
+                handleChange (event) {
+                    const name = event.target.name
+                    const target = event.target
+                    const value = event.target.type=='checkbox'?target.checked : target.value
+                    this.setState({[name]:value})
+                }
+
+                render () {
+                    return (<form action="">
+                        <label for="">
+                            Is going: 
+                            <input name="isGoing" type="checkbox" checked={this.state.isGoing} onChange={this.handleChange}>
+                        </label>
+                        <br/>
+                        <label for="">
+                            Is going: 
+                            <input name="numberOfGuests" type="number" value={this.state.value} onChange={this.handleChange}>
+                        </label>
+                    </form>)
+                }
+
+            }
+            
+        </script>
+  </body>
+</html>
+    
