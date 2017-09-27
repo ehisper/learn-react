@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Composition-vs-Inheritance.html</title>
+    <script src="https://unpkg.com/react@latest/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+  </head>
+  <body>
+        <div id="root"></div>
+        <!-- 组件容器内嵌套的组件以属性的形式放置在父组件上
+        我们建议这些组件使用 children 属性将子元素直接传递到输出。 -->
+        <script type="text/babel">
+            class SmallC extends React.Component {
+                constructor (props) {
+                    super(props)
+                }
+                render () {
+                    return (<div>
+                        {props.children}
+                    </div>)
+                }
+            }  
+               
+           
+            class MiddleC extends React.Component {
+                constructor (props) {
+                    super(props)
+                }
+                render () {
+                    return (<SmallC>
+                        <h1>{props.title}</h1>
+                        <h2>{props.message}</h2>
+                        {props.children}
+                </SmallC>)
+                }
+            }
+
+            class BigC extends React.Component {
+                constructor (props) {
+                    super(props)
+                    this.state = {value:''}
+                    this.handleChange = this.handleChange().bind(this)
+                    this.handleClick = this.handleClick().bind(this)
+                }
+
+                handleChange (e) {
+                    this.setState({value:e.target.value})
+                }
+                handleClick () {
+                    alert('welcome,'+ {this.value})
+                }
+                render () {
+                    return (<MiddleC title='i am titlw' message='i am a message'>
+                        <input type="text" vlaue={this.state.value} onChange={this.handleChange}>
+                        <button onClick={this.handleClick}></button>
+                        sign me up!
+                </MiddleC>)
+                }
+            }
+            ReactDOM.render(<BigC/>,document.getElementById('root'))
+
+        </script>
+  </body>
+</html>
+    
